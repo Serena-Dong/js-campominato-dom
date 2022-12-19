@@ -4,6 +4,12 @@ const form = document.getElementById('form');
 const startText = document.getElementById('click');
 const btn =  document.getElementById("btn-play");
 
+//* VARIABILI //
+
+let numbersClicked = [];
+const bomb = [];
+console.log(bomb);
+
 
 // * FUNZIONI *//
 //Generatore di gliglia
@@ -21,21 +27,15 @@ const createCell = (content) => {
     return cell;
 }
 //Generatore di numeri casuali
-const randomNumberGenerator = (min, max, blacklist) => {
-
+const randomNumberGenerator = (min, max, blackList) => {
     let randomNumber;
-
     do{
        randomNumber = Math.floor(Math.random() * (max + 1 - min) + min);
-    } while (blacklist.includes(randomNumber));
+    } while (blackList.includes(randomNumber));
 
     return randomNumber;
 }
 
-
-for (i = 0; i <= 16; i++){
-    console.log(randomNumberGenerator(1,100, ''));
-}
 
 //Creo la gliglia premendo il bottone play
 form.addEventListener('submit', function(event){
@@ -47,7 +47,7 @@ form.addEventListener('submit', function(event){
     //Rimuovo il testo
     startText.remove()
     
-    //Parametri per la griglia
+    // * GRIGLIA
     const rows = 10;
     const cols = 10;
     const totalCells = rows * cols;
@@ -61,24 +61,70 @@ form.addEventListener('submit', function(event){
         pagina.appendChild(grid);
     }
 
+    //Numeri delle bombe
+    const bombDoubles = [];
+    for (i = 1; i <= 16; i++){
 
-    let numbersClicked = [];
+        const bombNumbers = randomNumberGenerator(1, totalCells, bombDoubles);
+        bombDoubles.push(bombNumbers);
+        bomb.push(bombNumbers);
+    }
 
-    for (let i = 0; i < totalCells; i++){
+    
+    // * CELLE
+
+    //Contenitore per i doppi
+    const doubles = [];
+
+    for (let i = 1; i <= totalCells; i++){
         
         //Creo una cella
-        const cell = createCell (i + 1);
+        const cellNumbers = randomNumberGenerator(1, totalCells, doubles);
+
+        doubles.push(cellNumbers);
+
+        const cell = createCell (cellNumbers);
         
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
-            cell.classList.add('clicked');
-            
-            numbersClicked.push( i + 1);
-            console.log(numbersClicked.length);
-        });
 
-    //Appendo in pagina
-    grid.appendChild(cell);
+            //Inserisco il numero cliccato nell'array dei numeri cliccati
+            numbersClicked.push(cellNumbers);
+
+            //Conteggio punteggio
+            console.log(numbersClicked.length);
+
+            //Rivelazione del numero al click
+            //cell.append(cellNumbers);
+
+            // * CHECK
+            
+            //isABomb = false;
+
+            for (i = 0; i < bomb.length; i++){
+                const bombNumbers = bomb[i];
+                console.log(bombNumbers, numbersClicked);
+
+                if (numbersClicked !== bombNumbers){
+                    cell.classList.add('neutral');
+                } else{
+                    cell.classList.add('bomb');
+                }
+            }
+
+            /*
+            if (isABomb = true){
+                cell.classList.add('bomb');
+            } else {
+                cell.classList.add('neutral');
+            }
+            */
+             
+            
+        }, {once : true});
+
+        //Appendo in pagina
+        grid.appendChild(cell);
 
     }
 })

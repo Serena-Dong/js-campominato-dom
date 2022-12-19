@@ -36,15 +36,18 @@ body{
 #grid .cell{
     width: calc(100% / 10);
     height: calc(100% / 10);
-    border: white 2px solid;
+    border: black 2px solid;
     cursor: pointer;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#grid .cell.clicked{
+#grid .cell.neutral{
     background-color: cyan;
+}
+#grid .cell.bomb{
+    background-color: red;
 }
 
 /* STRUCTURE */
@@ -55,7 +58,7 @@ header{
 main{
     max-height: 600px;
     background-color: turquoise;
-    color: white;
+    color: black;
 }
 footer{
     height: 80px;
