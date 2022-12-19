@@ -76,10 +76,10 @@ form.addEventListener('submit', function(event){
     //Contenitore per i doppi
     const doubles = [];
 
-    for (let i = 1; i <= totalCells; i++){
+    for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
-        const cellNumbers = randomNumberGenerator(1, totalCells, doubles);
+        const cellNumbers = (i + 1);
 
         doubles.push(cellNumbers);
 
