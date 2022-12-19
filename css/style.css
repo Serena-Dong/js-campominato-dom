@@ -1,0 +1,84 @@
+/* GENERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background-color: turquoise;
+    color: black;
+}
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 80px;
+}
+
+/* GRID */
+#grid{
+    width: 500px;
+    height: 500px;
+    margin: 100px auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+#grid .cell{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: white 2px solid;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#grid .cell.clicked{
+    background-color: cyan;
+}
+
+/* STRUCTURE */
+header{
+    height: 100px;
+    background-color: white;
+}
+main{
+    max-height: 600px;
+    background-color: turquoise;
+    color: white;
+}
+footer{
+    height: 80px;
+    background-color: white;
+}
+
+/* SPECIFIC STUFF*/
+#logo, #title, p{
+    margin-left: 30px;
+}
+
+#btn-play{
+    padding: 5px 30px;
+    margin: 30px;
+    border-radius: 5px
+}
+
+#click{
+    text-align: center;
+    margin: 400px ;
+}
+
+footer p{
+    font-size: 20px;
+}
+
