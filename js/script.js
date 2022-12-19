@@ -50,7 +50,7 @@ form.addEventListener('submit', function(event){
 
 
 
-    const clickedNumbers = [];
+    const numbersClicked = [];
     
     for (let i = 0; i < totalCells; i++){
         
@@ -60,8 +60,8 @@ form.addEventListener('submit', function(event){
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
             cell.classList.add('clicked');
-            clickedNumbers.push( i + 1);
-            console.log(clickedNumbers.length);
+            numbersClicked.push( i + 1);
+            console.log(numbersClicked.length);
 
         });
 
