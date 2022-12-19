@@ -74,16 +74,12 @@ form.addEventListener('submit', function(event){
     // * CELLE
 
     //Contenitore per i doppi
-    const doubles = [];
 
     for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
-        const cellNumbers = (i + 1);
 
-        doubles.push(cellNumbers);
-
-        const cell = createCell (cellNumbers);
+        const cell = createCell (i + 1);
         
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
