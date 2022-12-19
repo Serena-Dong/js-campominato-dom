@@ -7,7 +7,7 @@ const btn =  document.getElementById("btn-play");
 //* VARIABILI //
 
 let numbersClicked = [];
-const bomb = [];
+let bomb = [];
 console.log(bomb);
 
 
@@ -22,7 +22,7 @@ const createGrid = () => {
 //Generatore di celle
 const createCell = (content) => {
     const cell = document.createElement('div');
-    cell.append(content);
+    //cell.append(content);
     cell.classList.add('cell');
     return cell;
 }
@@ -78,8 +78,9 @@ form.addEventListener('submit', function(event){
     for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
+        const cellNumbers = (i + 1);
 
-        const cell = createCell (i + 1);
+        const cell = createCell (cellNumbers);
         
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
@@ -91,32 +92,22 @@ form.addEventListener('submit', function(event){
             console.log(numbersClicked.length);
 
             //Rivelazione del numero al click
-            //cell.append(cellNumbers);
+            cell.append(cellNumbers);
 
             // * CHECK
-            
-            //isABomb = false;
-
+        
             for (i = 0; i < bomb.length; i++){
-                const bombNumbers = bomb[i];
+                let bombNumbers = bomb[i];
                 console.log(bombNumbers, numbersClicked);
 
-                if (numbersClicked !== bombNumbers){
+                if ( numbersClicked.includes(bombNumbers) ){
+                    cell.classList.add('bomb');   
+                    console.log('Hai Perso! Partita Terminata.','Punteggio: ', numbersClicked.length);
+                } else {
                     cell.classList.add('neutral');
-                } else{
-                    cell.classList.add('bomb');
                 }
             }
 
-            /*
-            if (isABomb = true){
-                cell.classList.add('bomb');
-            } else {
-                cell.classList.add('neutral');
-            }
-            */
-             
-            
         }, {once : true});
 
         //Appendo in pagina
