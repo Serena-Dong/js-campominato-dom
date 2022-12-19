@@ -20,6 +20,22 @@ const createCell = (content) => {
     cell.classList.add('cell');
     return cell;
 }
+//Generatore di numeri casuali
+const randomNumberGenerator = (min, max, blacklist) => {
+
+    let randomNumber;
+
+    do{
+       randomNumber = Math.floor(Math.random() * (max + 1 - min) + min);
+    } while (blacklist.includes(randomNumber));
+
+    return randomNumber;
+}
+
+
+for (i = 0; i <= 16; i++){
+    console.log(randomNumberGenerator(1,100, ''));
+}
 
 //Creo la gliglia premendo il bottone play
 form.addEventListener('submit', function(event){
@@ -46,23 +62,19 @@ form.addEventListener('submit', function(event){
     }
 
 
+    let numbersClicked = [];
 
-
-
-
-    const numbersClicked = [];
-    
     for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
         const cell = createCell (i + 1);
-
+        
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
             cell.classList.add('clicked');
+            
             numbersClicked.push( i + 1);
             console.log(numbersClicked.length);
-
         });
 
     //Appendo in pagina
