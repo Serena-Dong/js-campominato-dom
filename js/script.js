@@ -69,27 +69,38 @@ form.addEventListener('submit', function(event){
         bombDoubles.push(bombNumbers);
         bomb.push(bombNumbers);
     }
-
     
     // * CELLE
-
-    //Contenitore per i doppi
-
+    
     for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
         const cellNumbers = (i + 1);
-
+        
         const cell = createCell (cellNumbers);
         
+        //Numeri dei normali
+        const neutralNumbers = [i + 1];
+
+        for ( let i = 0; i < cellNumbers.length; i++){
+
+            
+            if (bomb.includes(neutralNumbers)){
+                neutralNumbers.shift(bomb)
+                console.log(neutralNumbers)
+            }
+            
+        }
+
         //Aggiungo event listener per il click
         cell.addEventListener('click', function() {
-
+            
             //Inserisco il numero cliccato nell'array dei numeri cliccati
             numbersClicked.push(cellNumbers);
 
             //Conteggio punteggio
-            console.log(numbersClicked.length);
+            let points = numbersClicked.length
+            console.log(points);
 
             //Rivelazione del numero al click
             cell.append(cellNumbers);
@@ -102,11 +113,13 @@ form.addEventListener('submit', function(event){
 
                 if ( numbersClicked.includes(bombNumbers) ){
                     cell.classList.add('bomb');   
-                    console.log('Hai Perso! Partita Terminata.','Punteggio: ', numbersClicked.length);
+                    console.log('Hai Perso! Partita Terminata.','Punteggio: ', points);
                 } else {
                     cell.classList.add('neutral');
                 }
             }
+
+
 
         }, {once : true});
 
