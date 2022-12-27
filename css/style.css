@@ -16,7 +16,7 @@ header{
     background-color: white;
 }
 main{
-    max-height: 600px;
+    max-height: 700px;
     background-color: turquoise;
     color: black;
 }
@@ -43,12 +43,11 @@ footer{
 #grid{
     width: 500px;
     height: 500px;
-    margin: 100px auto;
+    margin: 50px auto;
 
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    border: 2px solid black;
 }
 #grid .cell{
     border: black 1px solid;
@@ -98,6 +97,10 @@ footer{
 #click{
     text-align: center;
     margin: 400px ;
+}
+#result{
+    margin-top: 50px;
+    text-align: center;
 }
 
 footer p{

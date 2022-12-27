@@ -14,7 +14,6 @@ let numbersClicked = [];
 let bomb = [];
 console.log(bomb);
 
-
 // * FUNZIONI *//
 
 //Generatore di celle
@@ -74,13 +73,26 @@ form.addEventListener('submit', function(event){
 
     const totalCells = cols * rows;
 
+    //Numeri delle bombe
+    const bombDoubles = [];
+    for (i = 1; i <= 16; i++){
+
+        const bombNumbers = randomNumberGenerator(1, totalCells, bombDoubles);
+        bombDoubles.push(bombNumbers);
+        bomb.push(bombNumbers);
+    }
+    
+    //PUNTEGGIO MAX
+    const maxScore = totalCells - 16;
+    console.log(maxScore);
+
+
     // * CELLE
     
     for (let i = 0; i < totalCells; i++){
         
         //Creo una cella
         const cellNumbers = (i + 1);
-        
         const cell = createCell (cellNumbers);
         
         //Numeri dei normali
@@ -113,7 +125,9 @@ form.addEventListener('submit', function(event){
 
                 if ( numbersClicked.includes(bombNumbers) ){
                     cell.classList.add('bomb');   
-                    console.log('Hai Perso! Partita Terminata.','Punteggio: ', points);
+                    result.innerText = `Hai Perso! Partita Terminata. 
+                    
+                    Punteggio: ${points}`;
                 } else {
                     cell.classList.add('neutral');
                 }
@@ -128,14 +142,7 @@ form.addEventListener('submit', function(event){
 
     }
     
-    //Numeri delle bombe
-    const bombDoubles = [];
-    for (i = 1; i <= 16; i++){
 
-        const bombNumbers = randomNumberGenerator(1, totalCells, bombDoubles);
-        bombDoubles.push(bombNumbers);
-        bomb.push(bombNumbers);
-    }
 })
 /* # MILESTONE 1
 Prepariamo "qualcosa" per tenere il punteggio dell'utente.
