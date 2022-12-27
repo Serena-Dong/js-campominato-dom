@@ -47,14 +47,6 @@ form.addEventListener('submit', function(event){
     //Rimuovo il testo
     startText.remove()
     
-    //Numeri delle bombe
-    const bombDoubles = [];
-    for (i = 1; i <= 16; i++){
-
-        const bombNumbers = randomNumberGenerator(1, 100, bombDoubles);
-        bombDoubles.push(bombNumbers);
-        bomb.push(bombNumbers);
-    }
     
     //Recupero il valore del livello
     const level = levelSelect.value;
@@ -136,6 +128,15 @@ form.addEventListener('submit', function(event){
         //Appendo in pagina
         pagina.appendChild(cell);
 
+    }
+    
+    //Numeri delle bombe
+    const bombDoubles = [];
+    for (i = 1; i <= 16; i++){
+
+        const bombNumbers = randomNumberGenerator(1, totalCells, bombDoubles);
+        bombDoubles.push(bombNumbers);
+        bomb.push(bombNumbers);
     }
 })
 /* # MILESTONE 1
