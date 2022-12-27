@@ -51,8 +51,6 @@ footer{
     border: 2px solid black;
 }
 #grid .cell{
-    width: calc(100% / 10);
-    height: calc(100% / 10);
     border: black 1px solid;
     cursor: pointer;
 
@@ -65,6 +63,19 @@ footer{
 }
 #grid .cell.bomb{
     background-color: red;
+}
+
+#grid.easy .cell{
+    height: calc(100% / 10);
+    width: calc(100% / 10);
+}
+#grid.normal .cell{
+    height: calc(100% / 9);
+    width: calc(100% / 9);
+}
+#grid.hard .cell{
+    height: calc(100% / 7);
+    width: calc(100% / 7);
 }
 
 /* SPECIFIC STUFF*/

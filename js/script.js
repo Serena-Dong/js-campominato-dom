@@ -16,10 +16,11 @@ console.log(bomb);
 // * FUNZIONI *//
 
 //Generatore di celle
-const createCell = (numbers) => {
+const createCell = (number) => {
     const cell = document.createElement('div');
     //cell.append(content);
     cell.classList.add('cell');
+
     return cell;
 }
 //Generatore di numeri casuali
@@ -58,6 +59,10 @@ form.addEventListener('submit', function(event){
     //Recupero il valore del livello
     const level = levelSelect.value;
 
+    //Aggiungo la classe livello nella grid
+    grid.classList.add(level)
+
+    //Calcolo le COLS e ROWS
     let cols;
     let rows;
 
@@ -72,7 +77,6 @@ form.addEventListener('submit', function(event){
         case 'hard':
             cols = rows = 7;
             break;
-        
     }
 
     const totalCells = cols * rows;
