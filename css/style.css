@@ -10,6 +10,22 @@ body{
     color: black;
 }
 
+/*  STRUCTURE */
+header{
+    height: 100px;
+    background-color: white;
+}
+main{
+    max-height: 600px;
+    background-color: turquoise;
+    color: black;
+}
+footer{
+    height: 80px;
+    background-color: white;
+}
+
+/* CONTAINER */
 .container{
     width: 100%;
     max-width: 1200px;
@@ -32,11 +48,12 @@ body{
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    border: 2px solid black;
 }
 #grid .cell{
     width: calc(100% / 10);
     height: calc(100% / 10);
-    border: black 2px solid;
+    border: black 1px solid;
     cursor: pointer;
 
     display: flex;
@@ -50,30 +67,21 @@ body{
     background-color: red;
 }
 
-/* STRUCTURE */
-header{
-    height: 100px;
-    background-color: white;
-}
-main{
-    max-height: 600px;
-    background-color: turquoise;
-    color: black;
-}
-footer{
-    height: 80px;
-    background-color: white;
-}
-
 /* SPECIFIC STUFF*/
 #logo, #title, p{
+    height: 100%;
     margin-left: 30px;
 }
 
 #btn-play{
-    padding: 5px 30px;
+    padding: 10px 40px;
     margin: 30px;
-    border-radius: 5px
+    border-radius: 10px;
+    border: 1px solid rgb(46, 98, 255);
+    background-color: rgb(46, 98, 255);
+    color: white;
+
+    cursor: pointer;
 }
 
 #click{

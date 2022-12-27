@@ -1,8 +1,10 @@
 //Recupero gli elementi
-const pagina = document.getElementById('game');
+const pagina = document.getElementById('grid');
 const form = document.getElementById('form');
 const startText = document.getElementById('click');
 const btn =  document.getElementById("btn-play");
+
+const levelSelect = document.getElementById('select-level');
 
 //* VARIABILI //
 
@@ -12,15 +14,9 @@ console.log(bomb);
 
 
 // * FUNZIONI *//
-//Generatore di gliglia
-const createGrid = () => {
-    const grid = document.createElement('div')
-    grid.setAttribute('id','grid')
-    return grid
-}
 
 //Generatore di celle
-const createCell = (content) => {
+const createCell = (numbers) => {
     const cell = document.createElement('div');
     //cell.append(content);
     cell.classList.add('cell');
@@ -42,34 +38,45 @@ form.addEventListener('submit', function(event){
     event.preventDefault()
 
     //Disattivo il buttone
-    btn.disabled = true;
+    btn.innerText = 'Ricomincia';
+    btn.addEventListener('click', function(){
+        pagina.remove(grid);
+    })
     
     //Rimuovo il testo
     startText.remove()
     
-    // * GRIGLIA
-    const rows = 10;
-    const cols = 10;
-    const totalCells = rows * cols;
-
-    for (let i = 0; i < 1; i++){
-
-        //Creo una griglia
-        const grid = createGrid(i);
-
-        //Appendo in pagina
-        pagina.appendChild(grid);
-    }
-
     //Numeri delle bombe
     const bombDoubles = [];
     for (i = 1; i <= 16; i++){
 
-        const bombNumbers = randomNumberGenerator(1, totalCells, bombDoubles);
+        const bombNumbers = randomNumberGenerator(1, 100, bombDoubles);
         bombDoubles.push(bombNumbers);
         bomb.push(bombNumbers);
     }
     
+    //Recupero il valore del livello
+    const level = levelSelect.value;
+
+    let cols;
+    let rows;
+
+    switch (level){
+        case 'easy':
+            default:
+            cols = rows = 10;
+            break;
+        case 'normal':
+            cols = rows = 9;
+            break;
+        case 'hard':
+            cols = rows = 7;
+            break;
+        
+    }
+
+    const totalCells = cols * rows;
+
     // * CELLE
     
     for (let i = 0; i < totalCells; i++){
@@ -84,7 +91,6 @@ form.addEventListener('submit', function(event){
 
         for ( let i = 0; i < cellNumbers.length; i++){
 
-            
             if (bomb.includes(neutralNumbers)){
                 neutralNumbers.shift(bomb)
                 console.log(neutralNumbers)
@@ -124,7 +130,7 @@ form.addEventListener('submit', function(event){
         }, {once : true});
 
         //Appendo in pagina
-        grid.appendChild(cell);
+        pagina.appendChild(cell);
 
     }
 })
