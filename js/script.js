@@ -33,16 +33,15 @@ const randomNumberGenerator = (min, max, blackList) => {
     return randomNumber;
 }
 
-
 //Creo la gliglia premendo il bottone play
 form.addEventListener('submit', function(event){
     event.preventDefault()
 
-    //Disattivo il buttone
+    //Cambiamo il testo del bottone
     btn.innerText = 'Ricomincia';
-    btn.addEventListener('click', function(){
-        pagina.remove(grid);
-    })
+
+    //Svuotiamo la griglia
+    grid.innerHTML = '';
     
     //Rimuovo il testo
     startText.remove()
