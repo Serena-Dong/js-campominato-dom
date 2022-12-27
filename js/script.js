@@ -3,6 +3,8 @@ const pagina = document.getElementById('grid');
 const form = document.getElementById('form');
 const startText = document.getElementById('click');
 const btn =  document.getElementById("btn-play");
+const score =  document.getElementById("score");
+
 
 const levelSelect = document.getElementById('select-level');
 
@@ -83,14 +85,11 @@ form.addEventListener('submit', function(event){
         
         //Numeri dei normali
         const neutralNumbers = [i + 1];
-
         for ( let i = 0; i < cellNumbers.length; i++){
-
             if (bomb.includes(neutralNumbers)){
                 neutralNumbers.shift(bomb)
                 console.log(neutralNumbers)
             }
-            
         }
 
         //Aggiungo event listener per il click
@@ -101,7 +100,7 @@ form.addEventListener('submit', function(event){
 
             //Conteggio punteggio
             let points = numbersClicked.length
-            console.log(points);
+            score.innerText = `Score: ${points}`;
 
             //Rivelazione del numero al click
             cell.append(cellNumbers);
