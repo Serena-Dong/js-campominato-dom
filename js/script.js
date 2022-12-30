@@ -43,6 +43,10 @@ form.addEventListener('submit', function(event){
 
     //Svuotiamo la griglia
     grid.innerHTML = '';
+    bomb = [];
+    numbersClicked = [];
+    result.innerText = '';
+    score.innerText = '';
     
     //Rimuovo il testo
     startText.remove()
@@ -128,8 +132,14 @@ form.addEventListener('submit', function(event){
                     result.innerText = `Hai Perso! Partita Terminata. 
                     
                     Punteggio: ${points}`;
+
                 } else {
                     cell.classList.add('neutral');
+                }
+
+                if (numbersClicked.length == maxScore){
+                    result.innerText = `Hai Vinto! Partita Terminata.`;
+                    
                 }
             }
 
